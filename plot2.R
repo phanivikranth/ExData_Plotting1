@@ -1,0 +1,8 @@
+table <- read.table('C:/Users/phani/Desktop/Coursera/Exploratory Data Analysis/Week 1/exdata%2Fdata%2Fhousehold_power_consumption/household_power_consumption.txt',sep=";",nrows= 2075260, header=TRUE, quote= "", strip.white=TRUE, stringsAsFactors = FALSE, na.strings= "?")
+twodate<- subset(table, (table$Date == "1/2/2007" | table$Date== "2/2/2007"))
+twodate$Date <- as.Date(twodate$Date, format = "%d/%m/%Y")
+datetime <- as.POSIXct(paste(twodate$Date, twodate$Time))
+png("plot2.png", width = 480, height = 480)
+globalActivePower <- as.numeric(twodate$Global_active_power)
+plot(datetime,globalActivePower,type = "l", xlab= "", ylab="Global Active Power(kilowatts)")
+dev.off()

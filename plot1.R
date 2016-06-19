@@ -1,0 +1,6 @@
+table <- read.table('C:/Users/phani/Desktop/Coursera/Exploratory Data Analysis/Week 1/exdata%2Fdata%2Fhousehold_power_consumption/household_power_consumption.txt',sep=";",nrows= 2075260, header=TRUE, quote= "", strip.white=TRUE, stringsAsFactors = FALSE, na.strings= "?")
+twodate<- subset(table, (table$Date == "1/2/2007" | table$Date== "2/2/2007"))
+twodate$Date <- as.Date(twodate$Date, format = "%d/%m/%Y")
+png("plot1.png", width = 480, height = 480)
+hist(twodate$Global_active_power, main="Global Active Power",col='red',ylab= "Frequency", xlab="Global Active Power(kilowatts)")
+dev.off()
